@@ -3,45 +3,44 @@ import { Badge } from "@/components/ui/badge";
 
 const experiences = [
   {
-    title: "Chef d'Équipe",
-    company: "The King Cut",
-    period: "2023 - Aujourd'hui",
+    title: "Apprenti Administrateur Systèmes et Réseau",
+    company: "Cornerstone OnDemand",
+    period: "Septembre 2023 - Aujourd'hui",
     location: "Paris, France",
-    description: "Intégré au sein d'une équipe de coiffeurs, responsable de la gestion et de l'amélioration de l'expérience client.",
+    description: "Intégré au sein de l'équipe IT dans un environnement international.",
     achievements: [
-      "Gestion et supervision d'une équipe de coiffeurs",
-      "Participation à des projets d'évolution de l'expérience client",
+      "Gestion et supervision du parc informatique (postes, serveurs, équipements réseau)",
+      "Participation à des projets d'évolution d'infrastructure (migration, déploiement)",
       "Collaboration en méthode agile avec les équipes techniques et métiers",
     ],
-    technologies: ["Management", "Gestion d'équipe", "Expérience client", "Méthode Agile"],
+    technologies: ["Windows Server", "AD", "Intune", "Jamf", "ServiceNow"],
   },
   {
-    title: "Vendeur",
-    company: "Nike",
-    period: "2019 - 2022",
-    location: "Tours, France",
-    description: "Accueil et conseil de la clientèle dans un environnement retail dynamique.",
+    title: "Technicien Support Informatique – Niveau 1",
+    company: "NES (National Électronique Service)",
+    period: "Juin - Août 2023",
+    location: "St-Cyr-en-Val, France",
+    description: "Poste orienté assistance utilisateur et gestion des incidents.",
     achievements: [
-      "Développement d'un excellent sens du relationnel",
-      "Accueil et conseil personnalisé de la clientèle",
-      "Garant de la qualité du service client",
-      "Respect des délais de livraison",
+      "Prise en charge des tickets d'assistance de niveau 1 (via GLPI)",
+      "Diagnostic et résolution des pannes matérielles/logicielles à distance ou sur site",
+      "Suivi des interventions et rédaction de procédures techniques",
     ],
-    technologies: ["Vente", "Conseil client", "Service client", "Retail"],
+    technologies: ["GLPI", "Support N1", "Diagnostic", "Documentation"],
   },
   {
-    title: "Chef d'Équipe",
-    company: "OCV Barber",
-    period: "2018 - 2019",
+    title: "Chef d'Équipe Logistique",
+    company: "E.Leclerc Drive",
+    period: "Août 2021 - Août 2023",
     location: "Orléans, France",
-    description: "Poste orienté gestion et management d'une équipe de professionnels.",
+    description: "Encadrement opérationnel d'une équipe logistique.",
     achievements: [
       "Planification des tâches et répartition des rôles au sein de l'équipe",
       "Suivi des indicateurs de performance et gestion des imprévus",
-      "Garant de la qualité du service client et du respect des délais",
+      "Garant de la qualité du service client et du respect des délais de livraison",
       "Formation des nouveaux collaborateurs",
     ],
-    technologies: ["Management", "Planification", "Formation", "Performance"],
+    technologies: ["Management", "Logistique", "KPIs", "Formation"],
   },
 ];
 
@@ -85,7 +84,7 @@ const Experience = () => {
                 </div>
 
                 <div>
-                  <h4 className="font-semibold mb-2 text-foreground">Compétences :</h4>
+                  <h4 className="font-semibold mb-2 text-foreground">Technologies :</h4>
                   <div className="flex flex-wrap gap-2">
                     {exp.technologies.map((tech, i) => (
                       <Badge key={i} variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20">
