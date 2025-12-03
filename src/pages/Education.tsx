@@ -4,33 +4,48 @@ import { GraduationCap, Award } from "lucide-react";
 
 const education = [
   {
-    degree: "Formation APS + Opérateur Rayon X – Titre Professionnel",
-    institution: "BCFormation",
-    period: "Mai 2024 - Août 2024",
-    location: "Saran",
-    description: "Formation certifiante orientée sécurité",
-    courses: ["Sensibilisation engins explosifs", "Analyse images Rayon X", "Rigueur missions", "Mesures sécurité"],
+    degree: "BTS SIO – Services Informatiques aux Organisations (option SISR)",
+    institution: "AFTEC",
+    period: "Septembre 2023 - Mai 2025",
+    location: "Orléans",
+    description: "Formation axée sur l'administration des systèmes et des réseaux (SISR)",
+    courses: [
+      "Configuration et sécurisation des réseaux (LAN, WAN, VPN)",
+      "Déploiement de serveurs (Linux, Windows Server)",
+      "Virtualisation (Hyper-V, VMware), supervision, sauvegarde",
+      "Gestion de projets informatiques et maintenance d'infrastructure",
+    ],
   },
   {
-    degree: "Formation Employé Commercial en Magasin",
-    institution: "INFREP",
-    period: "2012 - 2013",
-    location: "Orléans",
-    description: "Formation axée sur le développement des compétences en relation client",
-    courses: ["Sens du service", "Animation et fidélisation", "Relation client", "Gestion de projets"],
+    degree: "Technicien Support Informatique – Titre Professionnel",
+    institution: "Cformat Pro",
+    period: "Avril 2019 - Janvier 2021",
+    location: "Cergy",
+    description: "Formation certifiante orientée support IT utilisateur",
+    courses: [
+      "Diagnostic et résolution des incidents logiciels et matériels",
+      "Gestion de tickets, intervention sur site ou à distance",
+      "Installation et configuration de postes de travail",
+      "Suivi de parc informatique et assistance réseau de niveau 1",
+    ],
   },
   {
-    degree: "Bac Professionnel Vente – Prospection et Négociation Client",
-    institution: "Lycée Professionnel Jean Lurçat",
-    period: "2007 - 2011",
-    location: "Orléans",
-    description: "Apprentissage des fondamentaux de la vente et la relation client",
-    courses: ["Relation client", "Sens de l'accueil", "Qualité d'écoute", "Gestion espace de vente"],
+    degree: "Bac Professionnel ELEEC – Électrotechnique, Énergie, Équipements Communicants",
+    institution: "Lycée Professionnel Paul Le Rolland",
+    period: "2015 - 2018",
+    location: "Drancy",
+    description: "Apprentissage des fondamentaux de l'électricité et de l'électronique",
+    courses: [
+      "Lecture de plans, câblage, installation d'équipements électriques",
+      "Mise en sécurité et conformité des installations",
+      "Initiation à l'automatisme et à la domotique",
+    ],
   },
 ];
 
 const certifications = [
-  { name: "Titre Professionnel APS + Opérateur Rayon X", issuer: "BCFormation", date: "2024" },
+  { name: "BTS SIO option SISR", issuer: "AFTEC Orléans", date: "2025 (en cours)" },
+  { name: "Titre Professionnel Technicien Support Informatique", issuer: "Cformat Pro", date: "2021" },
 ];
 
 const Education = () => {
@@ -44,7 +59,6 @@ const Education = () => {
           </p>
         </div>
 
-        {/* Degrees Section */}
         <div className="mb-16 space-y-8">
           <h2 className="text-2xl font-bold flex items-center gap-2">
             <GraduationCap className="h-6 w-6 text-primary" />
@@ -56,7 +70,7 @@ const Education = () => {
               <div className="space-y-4">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2">
                   <div>
-                    <h3 className="text-2xl font-semibold text-foreground">{edu.degree}</h3>
+                    <h3 className="text-xl font-semibold text-foreground">{edu.degree}</h3>
                     <p className="text-lg text-secondary font-medium">{edu.institution}</p>
                   </div>
                   <div className="text-muted-foreground text-sm">
@@ -65,25 +79,23 @@ const Education = () => {
                   </div>
                 </div>
 
-
                 <p className="text-muted-foreground">{edu.description}</p>
 
                 <div>
-                  <h4 className="font-semibold mb-2 text-foreground">Contenu de la formation :</h4>
-                  <div className="flex flex-wrap gap-2">
+                  <h4 className="font-semibold mb-2 text-foreground">Compétences développées :</h4>
+                  <ul className="space-y-1 ml-4">
                     {edu.courses.map((course, i) => (
-                      <Badge key={i} variant="secondary" className="bg-secondary/10 text-secondary hover:bg-secondary/20">
+                      <li key={i} className="text-muted-foreground list-disc text-sm">
                         {course}
-                      </Badge>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
               </div>
             </Card>
           ))}
         </div>
 
-        {/* Certifications Section */}
         <div className="space-y-8">
           <h2 className="text-2xl font-bold flex items-center gap-2">
             <Award className="h-6 w-6 text-primary" />

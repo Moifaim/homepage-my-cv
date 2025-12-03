@@ -4,42 +4,51 @@ import { Progress } from "@/components/ui/progress";
 
 const skillCategories = [
   {
-    category: "Vente & Relation Client",
+    category: "Systèmes & Serveurs",
     skills: [
-      { name: "Accueil et conseil client", level: 95 },
-      { name: "Fidélisation clientèle", level: 90 },
-      { name: "Sens du service", level: 95 },
-      { name: "Qualité d'écoute", level: 90 },
+      { name: "Windows Server", level: 85 },
+      { name: "Debian / Linux", level: 80 },
+      { name: "Active Directory", level: 85 },
+      { name: "Intune / Jamf", level: 80 },
     ],
   },
   {
-    category: "Management & Leadership",
+    category: "Réseaux & Sécurité",
     skills: [
-      { name: "Gestion d'équipe", level: 90 },
-      { name: "Formation collaborateurs", level: 85 },
-      { name: "Planification des tâches", level: 85 },
-      { name: "Suivi de performance", level: 80 },
+      { name: "LAN / WAN / VPN", level: 80 },
+      { name: "OpenVPN", level: 75 },
+      { name: "Apache / Nginx", level: 70 },
+      { name: "Squid Proxy", level: 70 },
     ],
   },
   {
-    category: "Sécurité",
+    category: "Virtualisation & Supervision",
     skills: [
-      { name: "Analyse images Rayon X", level: 85 },
-      { name: "Mesures de sécurité", level: 85 },
-      { name: "Gestion d'incidents", level: 80 },
+      { name: "Hyper-V / VMware", level: 80 },
+      { name: "Centreon", level: 75 },
+      { name: "GLPI", level: 85 },
+      { name: "ServiceNow", level: 80 },
     ],
   },
   {
     category: "Outils & Langues",
     skills: [
-      { name: "Office 365", level: 75 },
+      { name: "Office 365", level: 90 },
       { name: "Français", level: 100 },
-      { name: "Anglais (A1)", level: 30 },
+      { name: "Anglais (C1)", level: 85 },
     ],
   },
 ];
 
-const softSkills = ["Sens du détail", "Gestion du stress", "Sang-froid", "Rigueur", "Ponctualité", "Relationnel", "Esprit d'équipe", "Adaptabilité"];
+const technologies = [
+  "Windows Server", "Debian", "Active Directory", "Intune", "Jamf",
+  "OpenVPN", "Centreon", "ServiceNow", "GLPI", "Apache", "Nginx",
+  "Squid", "Hyper-V", "VMware", "Office 365"
+];
+
+const softSkills = [
+  "Curieux", "Rigoureux", "Motivé", "Travail d'équipe", "Méthode Agile", "Autonomie", "Communication", "Résolution de problèmes"
+];
 
 const Skills = () => {
   return (
@@ -48,7 +57,7 @@ const Skills = () => {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">Compétences & Expertise</h1>
           <p className="text-xl text-muted-foreground">
-            Compétences techniques et qualités professionnelles
+            Compétences techniques en administration systèmes et réseaux
           </p>
         </div>
 
@@ -77,6 +86,24 @@ const Skills = () => {
           </div>
         </div>
 
+        {/* Technologies */}
+        <div className="mb-16">
+          <h2 className="text-2xl font-bold mb-6">Technologies & Outils</h2>
+          <Card className="p-6">
+            <div className="flex flex-wrap gap-3">
+              {technologies.map((tech, index) => (
+                <Badge
+                  key={index}
+                  variant="secondary"
+                  className="text-base py-2 px-4 bg-primary/10 text-primary hover:bg-primary/20 transition-all"
+                >
+                  {tech}
+                </Badge>
+              ))}
+            </div>
+          </Card>
+        </div>
+
         {/* Soft Skills */}
         <div>
           <h2 className="text-2xl font-bold mb-6">Qualités Personnelles</h2>
@@ -91,19 +118,6 @@ const Skills = () => {
                   {skill}
                 </Badge>
               ))}
-            </div>
-          </Card>
-        </div>
-
-        {/* Learning Section */}
-        <div className="mt-12">
-          <Card className="p-8 bg-gradient-to-br from-primary/5 to-secondary/5 border-2 border-primary/20">
-            <div className="text-center space-y-4">
-              <h3 className="text-2xl font-bold">Continuous Learning</h3>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                I'm always expanding my skillset and staying current with industry trends. 
-                Currently exploring: Rust, Kubernetes, and Advanced System Design patterns.
-              </p>
             </div>
           </Card>
         </div>

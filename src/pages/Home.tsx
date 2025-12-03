@@ -19,17 +19,18 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <div className="inline-block px-4 py-2 bg-primary/10 rounded-full text-sm font-medium text-primary mb-4">
-              Disponible pour de nouvelles opportunités
+              En recherche d'alternance Bac+3 à Bac+5
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-foreground">
-              Bonjour, je suis <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Serge Didi</span>
+              Bonjour, je suis <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Lionel Togbe</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground">
-              Vendeur en Prêt-à-porter
+              Bachelor Administrateur Système et Réseaux Informatique
             </p>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Professionnel expérimenté dans la vente et le management d'équipe, 
-              avec un sens aigu du service client et une passion pour la mode.
+              Étudiant en fin de BTS SIO, actuellement en alternance chez Cornerstone OnDemand. 
+              Compétences en gestion d'infrastructure et déploiement de solutions techniques.
+              Curieux, rigoureux et motivé.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Button asChild size="lg" className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity">
@@ -51,17 +52,17 @@ const Home = () => {
       <section className="py-8 bg-primary/5">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-6 md:gap-12 text-sm">
-            <a href="tel:+33767325781" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+            <a href="tel:+33744967887" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
               <Phone className="h-4 w-4" />
-              +33 7 67 32 57 81
+              +33 7 44 96 78 87
             </a>
-            <a href="mailto:didiserge90@gmail.com" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+            <a href="mailto:lionel.togbe@icloud.com" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
               <Mail className="h-4 w-4" />
-              didiserge90@gmail.com
+              lionel.togbe@icloud.com
             </a>
             <span className="flex items-center gap-2 text-muted-foreground">
               <MapPin className="h-4 w-4" />
-              Cagnes-sur-mer, France
+              Orléans, France
             </span>
           </div>
         </div>
@@ -76,7 +77,7 @@ const Home = () => {
                 <span className="text-2xl text-white">💼</span>
               </div>
               <h3 className="text-xl font-semibold">Expérience</h3>
-              <p className="text-muted-foreground">Chef d'équipe et vendeur avec plus de 5 ans d'expérience</p>
+              <p className="text-muted-foreground">Alternance et expériences professionnelles en IT</p>
             </Link>
           </Card>
 
@@ -86,7 +87,7 @@ const Home = () => {
                 <span className="text-2xl text-white">🚀</span>
               </div>
               <h3 className="text-xl font-semibold">Compétences</h3>
-              <p className="text-muted-foreground">Vente, management, relation client</p>
+              <p className="text-muted-foreground">Systèmes, réseaux, virtualisation et outils IT</p>
             </Link>
           </Card>
 
@@ -96,7 +97,7 @@ const Home = () => {
                 <span className="text-2xl text-white">🎓</span>
               </div>
               <h3 className="text-xl font-semibold">Formation</h3>
-              <p className="text-muted-foreground">Bac Pro Vente et formations professionnelles</p>
+              <p className="text-muted-foreground">BTS SIO SISR et formations certifiantes</p>
             </Link>
           </Card>
         </div>
@@ -109,14 +110,14 @@ const Home = () => {
             <h2 className="text-3xl font-bold text-center mb-8">À Propos de Moi</h2>
             <div className="prose prose-lg mx-auto text-muted-foreground">
               <p>
-                Fort d'une expérience variée dans la vente et le management, je suis passionné par 
-                l'excellence du service client et le développement des équipes. Mon parcours m'a 
-                permis de développer un sens aigu du relationnel et une rigueur professionnelle reconnue.
+                Étudiant en fin de BTS SIO, je poursuis mon parcours dans le domaine de l'administration 
+                systèmes et réseaux. Actuellement en alternance chez Cornerstone OnDemand, j'ai développé 
+                des compétences concrètes en gestion d'infrastructure et déploiement de solutions techniques.
               </p>
               <p>
-                Ma capacité à gérer le stress et mon sang-froid me permettent d'exceller dans des 
-                environnements dynamiques. Je suis également formé aux métiers de la sécurité, 
-                ce qui élargit mon champ de compétences.
+                Curieux, rigoureux et motivé, je cherche à intégrer une école pour poursuivre mes études 
+                en alternance (niveau Bac+3 à Bac+5), tout en continuant à contribuer au sein de mon 
+                entreprise actuelle.
               </p>
             </div>
           </div>
@@ -128,7 +129,7 @@ const Home = () => {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-8">Centres d'Intérêt</h2>
           <div className="flex flex-wrap justify-center gap-4">
-            {["Football", "Football Américain", "Mode", "Histoire"].map((interest) => (
+            {["Football Américain", "Judo", "Football", "Flag Football"].map((interest) => (
               <span key={interest} className="px-6 py-3 bg-primary/10 rounded-full text-primary font-medium">
                 {interest}
               </span>

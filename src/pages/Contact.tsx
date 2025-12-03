@@ -9,19 +9,19 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Téléphone",
-    value: "+33 7 67 32 57 81",
-    link: "tel:+33767325781",
+    value: "+33 7 44 96 78 87",
+    link: "tel:+33744967887",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "didiserge90@gmail.com",
-    link: "mailto:didiserge90@gmail.com",
+    value: "lionel.togbe@icloud.com",
+    link: "mailto:lionel.togbe@icloud.com",
   },
   {
     icon: MapPin,
     label: "Adresse",
-    value: "05 Avenue Jean Jaurès, 06800 Cagnes-sur-mer",
+    value: "99 Rue de Coulmiers, 45000 Orléans",
     link: null,
   },
 ];
@@ -117,10 +117,10 @@ const Contact = () => {
             </Card>
 
             <Card className="p-8 bg-gradient-to-br from-primary/5 to-secondary/5 border-2 border-primary/20">
-              <h3 className="text-xl font-bold mb-2">À la recherche d'opportunités</h3>
+              <h3 className="text-xl font-bold mb-2">Recherche d'alternance</h3>
               <p className="text-muted-foreground">
-                Je suis actuellement disponible pour de nouvelles opportunités professionnelles. 
-                N'hésitez pas à me contacter !
+                Je recherche une alternance pour poursuivre mes études en Bachelor/Master 
+                Administration Systèmes et Réseaux (Bac+3 à Bac+5). N'hésitez pas à me contacter !
               </p>
             </Card>
           </div>
