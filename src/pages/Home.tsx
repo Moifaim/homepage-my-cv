@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, Mail, Phone, MapPin } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 
 const Home = () => {
@@ -19,30 +19,50 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <div className="inline-block px-4 py-2 bg-primary/10 rounded-full text-sm font-medium text-primary mb-4">
-              Available for opportunities
+              Disponible pour de nouvelles opportunités
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-foreground">
-              Hi, I'm <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Your Name</span>
+              Bonjour, je suis <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Serge Didi</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground">
-              Full Stack Developer & Creative Problem Solver
+              Vendeur en Prêt-à-porter
             </p>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Passionate about building elegant solutions to complex problems. 
-              Specialized in modern web technologies and creating exceptional user experiences.
+              Professionnel expérimenté dans la vente et le management d'équipe, 
+              avec un sens aigu du service client et une passion pour la mode.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Button asChild size="lg" className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity">
                 <Link to="/contact">
-                  Get in Touch <ArrowRight className="ml-2 h-4 w-4" />
+                  Me Contacter <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
                 <a href="#" download>
-                  <Download className="mr-2 h-4 w-4" /> Download CV
+                  <Download className="mr-2 h-4 w-4" /> Télécharger CV
                 </a>
               </Button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Info Banner */}
+      <section className="py-8 bg-primary/5">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap justify-center gap-6 md:gap-12 text-sm">
+            <a href="tel:+33767325781" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+              <Phone className="h-4 w-4" />
+              +33 7 67 32 57 81
+            </a>
+            <a href="mailto:didiserge90@gmail.com" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+              <Mail className="h-4 w-4" />
+              didiserge90@gmail.com
+            </a>
+            <span className="flex items-center gap-2 text-muted-foreground">
+              <MapPin className="h-4 w-4" />
+              Cagnes-sur-mer, France
+            </span>
           </div>
         </div>
       </section>
@@ -55,8 +75,8 @@ const Home = () => {
               <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
                 <span className="text-2xl text-white">💼</span>
               </div>
-              <h3 className="text-xl font-semibold">Experience</h3>
-              <p className="text-muted-foreground">5+ years of professional development experience</p>
+              <h3 className="text-xl font-semibold">Expérience</h3>
+              <p className="text-muted-foreground">Chef d'équipe et vendeur avec plus de 5 ans d'expérience</p>
             </Link>
           </Card>
 
@@ -65,18 +85,18 @@ const Home = () => {
               <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
                 <span className="text-2xl text-white">🚀</span>
               </div>
-              <h3 className="text-xl font-semibold">Skills</h3>
-              <p className="text-muted-foreground">Modern tech stack and best practices</p>
+              <h3 className="text-xl font-semibold">Compétences</h3>
+              <p className="text-muted-foreground">Vente, management, relation client</p>
             </Link>
           </Card>
 
           <Card className="p-6 hover:shadow-lg transition-all duration-300 border-2 hover:border-primary/50">
-            <Link to="/projects" className="block space-y-4">
+            <Link to="/education" className="block space-y-4">
               <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                <span className="text-2xl text-white">✨</span>
+                <span className="text-2xl text-white">🎓</span>
               </div>
-              <h3 className="text-xl font-semibold">Projects</h3>
-              <p className="text-muted-foreground">Innovative solutions and side projects</p>
+              <h3 className="text-xl font-semibold">Formation</h3>
+              <p className="text-muted-foreground">Bac Pro Vente et formations professionnelles</p>
             </Link>
           </Card>
         </div>
@@ -86,19 +106,33 @@ const Home = () => {
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto space-y-6">
-            <h2 className="text-3xl font-bold text-center mb-8">About Me</h2>
+            <h2 className="text-3xl font-bold text-center mb-8">À Propos de Moi</h2>
             <div className="prose prose-lg mx-auto text-muted-foreground">
               <p>
-                I'm a passionate developer with a keen eye for detail and a love for creating 
-                seamless user experiences. With expertise in both frontend and backend development, 
-                I bring ideas to life through clean, efficient code.
+                Fort d'une expérience variée dans la vente et le management, je suis passionné par 
+                l'excellence du service client et le développement des équipes. Mon parcours m'a 
+                permis de développer un sens aigu du relationnel et une rigueur professionnelle reconnue.
               </p>
               <p>
-                My journey in tech started with a curiosity about how things work, which evolved 
-                into a career building innovative solutions. I thrive in collaborative environments 
-                and am always eager to learn new technologies.
+                Ma capacité à gérer le stress et mon sang-froid me permettent d'exceller dans des 
+                environnements dynamiques. Je suis également formé aux métiers de la sécurité, 
+                ce qui élargit mon champ de compétences.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Interests Section */}
+      <section className="py-16 container mx-auto px-4">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-8">Centres d'Intérêt</h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            {["Football", "Football Américain", "Mode", "Histoire"].map((interest) => (
+              <span key={interest} className="px-6 py-3 bg-primary/10 rounded-full text-primary font-medium">
+                {interest}
+              </span>
+            ))}
           </div>
         </div>
       </section>
