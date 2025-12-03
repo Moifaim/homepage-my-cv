@@ -3,43 +3,45 @@ import { Badge } from "@/components/ui/badge";
 
 const experiences = [
   {
-    title: "Senior Full Stack Developer",
-    company: "Tech Company Inc.",
-    period: "2022 - Present",
-    location: "Remote",
-    description: "Leading development of scalable web applications using modern technologies. Mentoring junior developers and establishing best practices.",
+    title: "Chef d'Équipe",
+    company: "The King Cut",
+    period: "2023 - Aujourd'hui",
+    location: "Paris, France",
+    description: "Intégré au sein d'une équipe de coiffeurs, responsable de la gestion et de l'amélioration de l'expérience client.",
     achievements: [
-      "Reduced application load time by 40% through optimization",
-      "Led migration to microservices architecture",
-      "Implemented CI/CD pipeline reducing deployment time by 60%",
+      "Gestion et supervision d'une équipe de coiffeurs",
+      "Participation à des projets d'évolution de l'expérience client",
+      "Collaboration en méthode agile avec les équipes techniques et métiers",
     ],
-    technologies: ["React", "Node.js", "PostgreSQL", "AWS", "Docker"],
+    technologies: ["Management", "Gestion d'équipe", "Expérience client", "Méthode Agile"],
   },
   {
-    title: "Full Stack Developer",
-    company: "Digital Solutions Ltd.",
-    period: "2020 - 2022",
-    location: "New York, NY",
-    description: "Developed and maintained multiple client-facing applications. Collaborated with design team to implement pixel-perfect interfaces.",
+    title: "Vendeur",
+    company: "Nike",
+    period: "2019 - 2022",
+    location: "Tours, France",
+    description: "Accueil et conseil de la clientèle dans un environnement retail dynamique.",
     achievements: [
-      "Built 5+ production applications from scratch",
-      "Improved test coverage from 40% to 85%",
-      "Implemented real-time features using WebSockets",
+      "Développement d'un excellent sens du relationnel",
+      "Accueil et conseil personnalisé de la clientèle",
+      "Garant de la qualité du service client",
+      "Respect des délais de livraison",
     ],
-    technologies: ["React", "TypeScript", "Express", "MongoDB", "Redis"],
+    technologies: ["Vente", "Conseil client", "Service client", "Retail"],
   },
   {
-    title: "Junior Developer",
-    company: "StartUp Ventures",
-    period: "2019 - 2020",
-    location: "San Francisco, CA",
-    description: "Started career working on various frontend and backend projects. Gained experience in agile development and version control.",
+    title: "Chef d'Équipe",
+    company: "OCV Barber",
+    period: "2018 - 2019",
+    location: "Orléans, France",
+    description: "Poste orienté gestion et management d'une équipe de professionnels.",
     achievements: [
-      "Contributed to 10+ sprint releases",
-      "Developed reusable component library",
-      "Participated in code reviews and pair programming",
+      "Planification des tâches et répartition des rôles au sein de l'équipe",
+      "Suivi des indicateurs de performance et gestion des imprévus",
+      "Garant de la qualité du service client et du respect des délais",
+      "Formation des nouveaux collaborateurs",
     ],
-    technologies: ["JavaScript", "React", "REST API", "Git"],
+    technologies: ["Management", "Planification", "Formation", "Performance"],
   },
 ];
 
@@ -48,9 +50,9 @@ const Experience = () => {
     <div className="min-h-screen py-12">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Work Experience</h1>
+          <h1 className="text-4xl font-bold mb-4">Expérience Professionnelle</h1>
           <p className="text-xl text-muted-foreground">
-            My professional journey and key accomplishments
+            Mon parcours professionnel et mes réalisations
           </p>
         </div>
 
@@ -72,7 +74,7 @@ const Experience = () => {
                 <p className="text-muted-foreground">{exp.description}</p>
 
                 <div>
-                  <h4 className="font-semibold mb-2 text-foreground">Key Achievements:</h4>
+                  <h4 className="font-semibold mb-2 text-foreground">Réalisations clés :</h4>
                   <ul className="space-y-1 ml-4">
                     {exp.achievements.map((achievement, i) => (
                       <li key={i} className="text-muted-foreground list-disc">
@@ -83,7 +85,7 @@ const Experience = () => {
                 </div>
 
                 <div>
-                  <h4 className="font-semibold mb-2 text-foreground">Technologies:</h4>
+                  <h4 className="font-semibold mb-2 text-foreground">Compétences :</h4>
                   <div className="flex flex-wrap gap-2">
                     {exp.technologies.map((tech, i) => (
                       <Badge key={i} variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20">

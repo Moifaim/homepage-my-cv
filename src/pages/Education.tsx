@@ -4,51 +4,33 @@ import { GraduationCap, Award } from "lucide-react";
 
 const education = [
   {
-    degree: "Master of Science in Computer Science",
-    institution: "University of Technology",
-    period: "2017 - 2019",
-    location: "Boston, MA",
-    gpa: "3.9/4.0",
-    description: "Specialized in Software Engineering and Machine Learning",
-    courses: [
-      "Advanced Algorithms",
-      "Distributed Systems",
-      "Machine Learning",
-      "Software Architecture",
-    ],
+    degree: "Formation APS + Opérateur Rayon X – Titre Professionnel",
+    institution: "BCFormation",
+    period: "Mai 2024 - Août 2024",
+    location: "Saran",
+    description: "Formation certifiante orientée sécurité",
+    courses: ["Sensibilisation engins explosifs", "Analyse images Rayon X", "Rigueur missions", "Mesures sécurité"],
   },
   {
-    degree: "Bachelor of Science in Computer Science",
-    institution: "State University",
-    period: "2013 - 2017",
-    location: "Seattle, WA",
-    gpa: "3.7/4.0",
-    description: "Major in Computer Science with minor in Mathematics",
-    courses: [
-      "Data Structures",
-      "Database Systems",
-      "Web Development",
-      "Operating Systems",
-    ],
+    degree: "Formation Employé Commercial en Magasin",
+    institution: "INFREP",
+    period: "2012 - 2013",
+    location: "Orléans",
+    description: "Formation axée sur le développement des compétences en relation client",
+    courses: ["Sens du service", "Animation et fidélisation", "Relation client", "Gestion de projets"],
+  },
+  {
+    degree: "Bac Professionnel Vente – Prospection et Négociation Client",
+    institution: "Lycée Professionnel Jean Lurçat",
+    period: "2007 - 2011",
+    location: "Orléans",
+    description: "Apprentissage des fondamentaux de la vente et la relation client",
+    courses: ["Relation client", "Sens de l'accueil", "Qualité d'écoute", "Gestion espace de vente"],
   },
 ];
 
 const certifications = [
-  {
-    name: "AWS Certified Solutions Architect",
-    issuer: "Amazon Web Services",
-    date: "2023",
-  },
-  {
-    name: "Professional Scrum Master I",
-    issuer: "Scrum.org",
-    date: "2022",
-  },
-  {
-    name: "MongoDB Certified Developer",
-    issuer: "MongoDB University",
-    date: "2021",
-  },
+  { name: "Titre Professionnel APS + Opérateur Rayon X", issuer: "BCFormation", date: "2024" },
 ];
 
 const Education = () => {
@@ -56,9 +38,9 @@ const Education = () => {
     <div className="min-h-screen py-12">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Education</h1>
+          <h1 className="text-4xl font-bold mb-4">Formation</h1>
           <p className="text-xl text-muted-foreground">
-            Academic background and certifications
+            Mon parcours académique et mes certifications
           </p>
         </div>
 
@@ -66,7 +48,7 @@ const Education = () => {
         <div className="mb-16 space-y-8">
           <h2 className="text-2xl font-bold flex items-center gap-2">
             <GraduationCap className="h-6 w-6 text-primary" />
-            Degrees
+            Diplômes et Formations
           </h2>
           
           {education.map((edu, index) => (
@@ -83,16 +65,11 @@ const Education = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4">
-                  <Badge variant="outline" className="border-primary text-primary">
-                    GPA: {edu.gpa}
-                  </Badge>
-                </div>
 
                 <p className="text-muted-foreground">{edu.description}</p>
 
                 <div>
-                  <h4 className="font-semibold mb-2 text-foreground">Relevant Coursework:</h4>
+                  <h4 className="font-semibold mb-2 text-foreground">Contenu de la formation :</h4>
                   <div className="flex flex-wrap gap-2">
                     {edu.courses.map((course, i) => (
                       <Badge key={i} variant="secondary" className="bg-secondary/10 text-secondary hover:bg-secondary/20">

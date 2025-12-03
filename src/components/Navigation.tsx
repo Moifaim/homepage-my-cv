@@ -1,15 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
-import { Home, Briefcase, GraduationCap, Code, FolderOpen, Mail } from "lucide-react";
+import { Home, Briefcase, GraduationCap, Code, Mail } from "lucide-react";
 
 const Navigation = () => {
   const location = useLocation();
   
   const navItems = [
-    { path: "/", label: "Home", icon: Home },
-    { path: "/experience", label: "Experience", icon: Briefcase },
-    { path: "/education", label: "Education", icon: GraduationCap },
-    { path: "/skills", label: "Skills", icon: Code },
-    { path: "/projects", label: "Projects", icon: FolderOpen },
+    { path: "/", label: "Accueil", icon: Home },
+    { path: "/experience", label: "Expérience", icon: Briefcase },
+    { path: "/education", label: "Formation", icon: GraduationCap },
+    { path: "/skills", label: "Compétences", icon: Code },
     { path: "/contact", label: "Contact", icon: Mail },
   ];
 
@@ -18,7 +17,7 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            Portfolio
+            Serge Didi
           </Link>
           
           <div className="hidden md:flex items-center gap-1">
