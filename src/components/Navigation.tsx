@@ -1,26 +1,29 @@
 import { Link, useLocation } from "react-router-dom";
-import { Home, Briefcase, GraduationCap, Code, Mail } from "lucide-react";
+import { Home, Briefcase, GraduationCap, Code, Mail, Terminal, Shield } from "lucide-react";
 
 const Navigation = () => {
   const location = useLocation();
   
   const navItems = [
-    { path: "/", label: "Accueil", icon: Home },
-    { path: "/experience", label: "Expérience", icon: Briefcase },
-    { path: "/education", label: "Formation", icon: GraduationCap },
-    { path: "/skills", label: "Compétences", icon: Code },
-    { path: "/contact", label: "Contact", icon: Mail },
+    { path: "/", label: "Terminal", icon: Terminal, cmd: "~" },
+    { path: "/experience", label: "Exp", icon: Briefcase, cmd: "/exp" },
+    { path: "/education", label: "Edu", icon: GraduationCap, cmd: "/edu" },
+    { path: "/skills", label: "Skills", icon: Code, cmd: "/skills" },
+    { path: "/contact", label: "Contact", icon: Mail, cmd: "/contact" },
   ];
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
-          <Link to="/" className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            Lionel Togbe
+        <div className="flex h-14 items-center justify-between">
+          <Link to="/" className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
+            <Shield className="h-5 w-5" />
+            <span className="font-mono font-bold text-sm hidden sm:block">
+              <span className="text-muted-foreground">root@</span>lionel-cv
+            </span>
           </Link>
           
-          <div className="hidden md:flex items-center gap-1">
+          <div className="flex items-center gap-1">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = location.pathname === item.path;
@@ -28,34 +31,15 @@ const Navigation = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded font-mono text-xs transition-all ${
                     isActive
-                      ? "bg-primary text-primary-foreground shadow-md"
-                      : "hover:bg-muted text-foreground"
+                      ? "bg-primary text-primary-foreground shadow-[0_0_10px_hsl(120_100%_50%/0.5)]"
+                      : "hover:bg-muted text-muted-foreground hover:text-foreground"
                   }`}
                 >
-                  <Icon className="h-4 w-4" />
-                  <span>{item.label}</span>
-                </Link>
-              );
-            })}
-          </div>
-
-          <div className="md:hidden flex items-center gap-2">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = location.pathname === item.path;
-              return (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`p-2 rounded-md transition-all ${
-                    isActive
-                      ? "bg-primary text-primary-foreground"
-                      : "hover:bg-muted text-foreground"
-                  }`}
-                >
-                  <Icon className="h-4 w-4" />
+                  <Icon className="h-3.5 w-3.5" />
+                  <span className="hidden md:inline">{item.label}</span>
+                  <span className="text-[10px] opacity-60 hidden lg:inline">{item.cmd}</span>
                 </Link>
               );
             })}
