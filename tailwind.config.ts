@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        mono: ["JetBrains Mono", "Share Tech Mono", "monospace"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -57,6 +60,14 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        terminal: {
+          green: "hsl(var(--terminal-green))",
+          "green-dim": "hsl(var(--terminal-green-dim))",
+          cyan: "hsl(var(--terminal-cyan))",
+          red: "hsl(var(--terminal-red))",
+          yellow: "hsl(var(--terminal-yellow))",
+          purple: "hsl(var(--terminal-purple))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -80,10 +91,15 @@ export default {
             height: "0",
           },
         },
+        blink: {
+          "0%, 50%": { opacity: "1" },
+          "51%, 100%": { opacity: "0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        blink: "blink 1s infinite",
       },
     },
   },

@@ -1,5 +1,5 @@
-import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Terminal } from "lucide-react";
 
 const experiences = [
   {
@@ -48,54 +48,86 @@ const Experience = () => {
   return (
     <div className="min-h-screen py-12">
       <div className="container mx-auto px-4 max-w-4xl">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Expérience Professionnelle</h1>
-          <p className="text-xl text-muted-foreground">
-            Mon parcours professionnel et mes réalisations
+        {/* Header */}
+        <div className="mb-12">
+          <div className="flex items-center gap-3 mb-4">
+            <Terminal className="h-6 w-6 text-primary" />
+            <code className="text-primary text-sm">cat /var/log/experience.log</code>
+          </div>
+          <h1 className="text-3xl font-bold font-mono text-glow mb-2">
+            EXPÉRIENCE PROFESSIONNELLE
+          </h1>
+          <p className="text-muted-foreground font-mono text-sm">
+            // Parcours professionnel et réalisations
           </p>
         </div>
 
-        <div className="space-y-8">
+        {/* Experience Timeline */}
+        <div className="space-y-6">
           {experiences.map((exp, index) => (
-            <Card key={index} className="p-6 hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary">
+            <div
+              key={index}
+              className="cyber-card group hover:border-primary transition-all duration-300"
+            >
               <div className="space-y-4">
+                {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2">
                   <div>
-                    <h3 className="text-2xl font-semibold text-foreground">{exp.title}</h3>
-                    <p className="text-lg text-primary font-medium">{exp.company}</p>
+                    <h3 className="text-lg font-semibold font-mono text-foreground group-hover:text-glow transition-all">
+                      {exp.title}
+                    </h3>
+                    <p className="text-primary font-mono text-sm">{exp.company}</p>
                   </div>
-                  <div className="text-muted-foreground text-sm">
-                    <p>{exp.period}</p>
+                  <div className="text-muted-foreground text-xs font-mono">
+                    <p className="text-secondary">{exp.period}</p>
                     <p>{exp.location}</p>
                   </div>
                 </div>
 
-                <p className="text-muted-foreground">{exp.description}</p>
+                <p className="text-muted-foreground text-sm font-mono">{exp.description}</p>
 
+                {/* Achievements */}
                 <div>
-                  <h4 className="font-semibold mb-2 text-foreground">Réalisations clés :</h4>
+                  <h4 className="font-mono text-xs text-primary mb-2">
+                    $ ls -la ./achievements/
+                  </h4>
                   <ul className="space-y-1 ml-4">
                     {exp.achievements.map((achievement, i) => (
-                      <li key={i} className="text-muted-foreground list-disc">
+                      <li key={i} className="text-muted-foreground text-sm font-mono flex items-start gap-2">
+                        <span className="text-primary">→</span>
                         {achievement}
                       </li>
                     ))}
                   </ul>
                 </div>
 
+                {/* Technologies */}
                 <div>
-                  <h4 className="font-semibold mb-2 text-foreground">Technologies :</h4>
+                  <h4 className="font-mono text-xs text-primary mb-2">
+                    $ echo $TECH_STACK
+                  </h4>
                   <div className="flex flex-wrap gap-2">
                     {exp.technologies.map((tech, i) => (
-                      <Badge key={i} variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20">
+                      <Badge
+                        key={i}
+                        variant="outline"
+                        className="font-mono text-xs border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+                      >
                         {tech}
                       </Badge>
                     ))}
                   </div>
                 </div>
               </div>
-            </Card>
+            </div>
           ))}
+        </div>
+
+        {/* Footer */}
+        <div className="mt-8 text-center">
+          <code className="text-muted-foreground text-xs font-mono">
+            [EOF] experience.log - 3 entries
+          </code>
         </div>
       </div>
     </div>
