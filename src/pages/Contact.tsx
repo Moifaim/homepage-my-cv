@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, MapPin, Phone, Terminal, Send, Shield } from "lucide-react";
+import { Mail, MapPin, Phone, Send, Shield, MessageSquare, Zap } from "lucide-react";
 import { toast } from "sonner";
 
 const contactInfo = [
@@ -10,21 +10,18 @@ const contactInfo = [
     label: "Téléphone",
     value: "+33 7 44 96 78 87",
     link: "tel:+33744967887",
-    cmd: "phone",
   },
   {
     icon: Mail,
     label: "Email",
     value: "lionel.togbe@icloud.com",
     link: "mailto:lionel.togbe@icloud.com",
-    cmd: "email",
   },
   {
     icon: MapPin,
     label: "Localisation",
     value: "Orléans, France",
     link: null,
-    cmd: "location",
   },
 ];
 
@@ -37,110 +34,116 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen py-12">
+    <div className="min-h-screen py-16 relative z-10">
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Header */}
-        <div className="mb-12">
-          <div className="flex items-center gap-3 mb-4">
-            <Terminal className="h-6 w-6 text-primary" />
-            <code className="text-primary text-sm">./contact --interactive</code>
+        <header className="mb-16">
+          <div className="glass px-4 py-2 rounded-xl w-fit mb-6">
+            <code className="text-primary text-sm font-mono">./contact --interactive</code>
           </div>
-          <h1 className="text-3xl font-bold font-mono text-glow mb-2">
-            CONTACTEZ-MOI
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <span className="gradient-text">Contactez</span>
+            <span className="text-foreground">-moi</span>
           </h1>
-          <p className="text-muted-foreground font-mono text-sm">
-            // Établir une connexion sécurisée
+          <p className="text-muted-foreground text-lg">
+            Établir une connexion sécurisée
           </p>
-        </div>
+        </header>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-2 gap-8">
           {/* Contact Form */}
-          <div className="cyber-card">
-            <div className="flex items-center gap-2 mb-6">
-              <Send className="h-5 w-5 text-primary" />
-              <h2 className="text-xl font-bold font-mono text-primary">
-                $ sendmail --compose
-              </h2>
+          <section className="cyber-card">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-2 glass rounded-lg">
+                <MessageSquare className="h-5 w-5 text-primary" />
+              </div>
+              <h2 className="text-xl font-bold gradient-text">Envoyer un message</h2>
             </div>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label htmlFor="name" className="block text-xs font-mono text-muted-foreground mb-2">
-                  &gt; Votre nom_
+                <label htmlFor="name" className="block text-sm text-muted-foreground mb-2">
+                  Votre nom
                 </label>
                 <Input
                   id="name"
                   placeholder="John Doe"
                   required
-                  className="font-mono bg-muted/50 border-border focus:border-primary"
+                  className="cyber-input"
                 />
               </div>
               
               <div>
-                <label htmlFor="email" className="block text-xs font-mono text-muted-foreground mb-2">
-                  &gt; Votre email_
+                <label htmlFor="email" className="block text-sm text-muted-foreground mb-2">
+                  Votre email
                 </label>
                 <Input
                   id="email"
                   type="email"
                   placeholder="john@example.com"
                   required
-                  className="font-mono bg-muted/50 border-border focus:border-primary"
+                  className="cyber-input"
                 />
               </div>
               
               <div>
-                <label htmlFor="subject" className="block text-xs font-mono text-muted-foreground mb-2">
-                  &gt; Sujet_
+                <label htmlFor="subject" className="block text-sm text-muted-foreground mb-2">
+                  Sujet
                 </label>
                 <Input
                   id="subject"
                   placeholder="Opportunité d'alternance"
                   required
-                  className="font-mono bg-muted/50 border-border focus:border-primary"
+                  className="cyber-input"
                 />
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-xs font-mono text-muted-foreground mb-2">
-                  &gt; Message_
+                <label htmlFor="message" className="block text-sm text-muted-foreground mb-2">
+                  Message
                 </label>
                 <Textarea
                   id="message"
                   placeholder="Votre message..."
-                  className="min-h-[120px] font-mono bg-muted/50 border-border focus:border-primary"
+                  className="cyber-input min-h-[140px] resize-none"
                   required
                 />
               </div>
 
               <Button
                 type="submit"
-                className="w-full cyber-button bg-primary text-primary-foreground hover:bg-primary/90"
+                className="w-full cyber-button bg-primary text-primary-foreground hover:bg-primary/90 border-primary"
               >
                 <Send className="mr-2 h-4 w-4" />
-                ENVOYER LE MESSAGE
+                Envoyer le message
               </Button>
             </form>
-          </div>
+          </section>
 
           {/* Contact Information */}
           <div className="space-y-6">
-            <div className="cyber-card">
-              <h2 className="text-xl font-bold font-mono text-primary mb-6">
-                $ cat /etc/contact.conf
-              </h2>
+            {/* Contact Details */}
+            <section className="cyber-card">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 glass rounded-lg">
+                  <Mail className="h-5 w-5 text-primary" />
+                </div>
+                <h2 className="text-xl font-bold gradient-text">Coordonnées</h2>
+              </div>
+              
               <div className="space-y-4">
                 {contactInfo.map((info, index) => {
                   const Icon = info.icon;
                   const content = (
-                    <div className="flex items-center gap-4 p-3 rounded border border-border hover:border-primary transition-colors group">
-                      <div className="w-10 h-10 rounded border border-primary/50 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <div className="flex items-center gap-4 p-4 glass rounded-xl hover:scale-[1.02] transition-all group cursor-pointer">
+                      <div className="p-3 rounded-lg bg-primary/10 border border-primary/20 group-hover:border-primary/40 transition-colors">
                         <Icon className="h-5 w-5 text-primary" />
                       </div>
                       <div>
-                        <p className="text-xs text-muted-foreground font-mono">
-                          ${info.cmd}
+                        <p className="text-xs text-muted-foreground uppercase tracking-wider">
+                          {info.label}
                         </p>
-                        <p className="font-mono text-sm text-foreground">{info.value}</p>
+                        <p className="text-foreground font-medium">{info.value}</p>
                       </div>
                     </div>
                   );
@@ -154,52 +157,60 @@ const Contact = () => {
                   );
                 })}
               </div>
-            </div>
+            </section>
 
             {/* Alternance Search */}
-            <div className="cyber-card border-secondary relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-primary"></div>
-              <div className="flex items-start gap-3">
-                <Shield className="h-6 w-6 text-secondary flex-shrink-0" />
+            <section className="cyber-card border-secondary/20 relative">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-t-2xl"></div>
+              <div className="flex items-start gap-4">
+                <div className="p-3 glass rounded-xl">
+                  <Shield className="h-6 w-6 text-secondary" />
+                </div>
                 <div>
-                  <h3 className="text-lg font-bold font-mono text-secondary text-glow-cyan">
-                    RECHERCHE ALTERNANCE
+                  <h3 className="text-lg font-bold mb-2">
+                    <span className="gradient-text-accent">Recherche Alternance</span>
                   </h3>
-                  <p className="text-muted-foreground font-mono text-sm mt-2">
+                  <p className="text-muted-foreground text-sm mb-4">
                     Je recherche une alternance Bac+3 à Bac+5 pour me spécialiser 
-                    en cybersécurité. Motivé, rigoureux et passionné par la sécurité 
-                    informatique.
+                    en cybersécurité. Motivé, rigoureux et passionné.
                   </p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    <span className="text-xs font-mono px-2 py-1 bg-secondary/20 text-secondary rounded">
+                  <div className="flex flex-wrap gap-2">
+                    <span className="cyber-badge" style={{ borderColor: 'hsl(280 100% 65% / 0.3)', color: 'hsl(280 100% 70%)' }}>
                       Master Cybersécurité
                     </span>
-                    <span className="text-xs font-mono px-2 py-1 bg-primary/20 text-primary rounded">
+                    <span className="cyber-badge">
                       Disponible maintenant
                     </span>
                   </div>
                 </div>
               </div>
-            </div>
+            </section>
 
             {/* Status */}
-            <div className="cyber-card">
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-primary rounded-full animate-pulse"></div>
-                <span className="font-mono text-sm text-muted-foreground">
-                  Status: <span className="text-primary">ONLINE</span> - Réponse sous 24h
-                </span>
+            <section className="cyber-card">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <Zap className="h-5 w-5 text-primary" />
+                  <span className="text-sm text-muted-foreground">
+                    Status: <span className="text-primary font-medium">ONLINE</span>
+                  </span>
+                </div>
+                <div className="status-online text-sm text-muted-foreground">
+                  <span>Réponse sous 24h</span>
+                </div>
               </div>
-            </div>
+            </section>
           </div>
         </div>
 
         {/* Footer */}
-        <div className="mt-12 text-center">
-          <code className="text-muted-foreground text-xs font-mono">
-            [EOF] Connexion sécurisée établie - En attente de votre message
-          </code>
-        </div>
+        <footer className="mt-16 text-center">
+          <div className="glass px-6 py-3 rounded-xl inline-block">
+            <code className="text-muted-foreground text-sm font-mono">
+              [EOF] Connexion sécurisée — En attente de votre message
+            </code>
+          </div>
+        </footer>
       </div>
     </div>
   );
