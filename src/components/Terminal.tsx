@@ -8,44 +8,44 @@ interface TerminalLine {
 }
 
 const ASCII_BANNER = `
- ██╗     ██╗ ██████╗ ███╗   ██╗███████╗██╗     
- ██║     ██║██╔═══██╗████╗  ██║██╔════╝██║     
- ██║     ██║██║   ██║██╔██╗ ██║█████╗  ██║     
- ██║     ██║██║   ██║██║╚██╗██║██╔══╝  ██║     
- ███████╗██║╚██████╔╝██║ ╚████║███████╗███████╗
- ╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚══════╝
- ████████╗ ██████╗  ██████╗ ██████╗ ███████╗   
- ╚══██╔══╝██╔═══██╗██╔════╝ ██╔══██╗██╔════╝   
-    ██║   ██║   ██║██║  ███╗██████╔╝█████╗     
-    ██║   ██║   ██║██║   ██║██╔══██╗██╔══╝     
-    ██║   ╚██████╔╝╚██████╔╝██████╔╝███████╗   
-    ╚═╝    ╚═════╝  ╚═════╝ ╚═════╝ ╚══════╝   
+ ╭─────────────────────────────────────────╮
+ │                                         │
+ │   ██╗     ██╗ ██████╗ ███╗   ██╗███████╗██╗     │
+ │   ██║     ██║██╔═══██╗████╗  ██║██╔════╝██║     │
+ │   ██║     ██║██║   ██║██╔██╗ ██║█████╗  ██║     │
+ │   ██║     ██║██║   ██║██║╚██╗██║██╔══╝  ██║     │
+ │   ███████╗██║╚██████╔╝██║ ╚████║███████╗███████╗│
+ │   ╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚══════╝│
+ │                                         │
+ ╰─────────────────────────────────────────╯
 `;
 
 const HELP_TEXT = `
-Commandes disponibles:
-  
-  Navigation:
-    cd <page>     - Naviguer vers une page
-    ls            - Lister les pages disponibles
-    
-  Informations:
-    cat about     - Afficher mes informations
-    cat skills    - Voir mes compétences
-    cat exp       - Parcours professionnel
-    cat edu       - Formation et diplômes
-    cat contact   - Informations de contact
-    
-  Système:
-    whoami        - Qui suis-je ?
-    uname -a      - Informations système
-    clear         - Effacer le terminal
-    help          - Afficher cette aide
-    neofetch      - Afficher les infos système
-    
-  Easter eggs:
-    sudo rm -rf / - À vos risques et périls...
-    hack          - 🔓
+┌─────────────────────────────────────────┐
+│            COMMANDES DISPONIBLES        │
+├─────────────────────────────────────────┤
+│                                         │
+│  Navigation                             │
+│    cd <page>     Naviguer vers une page │
+│    ls            Lister les pages       │
+│                                         │
+│  Informations                           │
+│    cat about     Mes informations       │
+│    cat skills    Mes compétences        │
+│    cat exp       Parcours pro           │
+│    cat contact   Me contacter           │
+│                                         │
+│  Système                                │
+│    whoami        Qui suis-je ?          │
+│    neofetch      Infos système          │
+│    clear         Effacer le terminal    │
+│    help          Afficher cette aide    │
+│                                         │
+│  Easter eggs                            │
+│    hack          🔓                      │
+│    sudo rm -rf / À vos risques...       │
+│                                         │
+└─────────────────────────────────────────┘
 `;
 
 const PAGES = {
@@ -65,9 +65,8 @@ const Terminal = () => {
   const navigate = useNavigate();
   const [history, setHistory] = useState<TerminalLine[]>([
     { type: "ascii", content: ASCII_BANNER },
-    { type: "success", content: "Bienvenue sur le terminal de Lionel Togbe" },
-    { type: "output", content: "Tapez 'help' pour voir les commandes disponibles" },
-    { type: "output", content: "Tapez 'ls' pour voir les pages ou 'cd <page>' pour naviguer" },
+    { type: "success", content: "✨ Bienvenue sur le terminal de Lionel Togbe" },
+    { type: "output", content: "→ Tapez 'help' pour les commandes ou 'ls' pour naviguer" },
     { type: "output", content: "" },
   ]);
   const [currentInput, setCurrentInput] = useState("");
@@ -95,7 +94,6 @@ const Terminal = () => {
     const args = trimmedCmd.split(" ");
     const command = args[0];
 
-    // Add input to history
     addOutput([
       { 
         type: "input", 
@@ -104,7 +102,6 @@ const Terminal = () => {
       }
     ]);
 
-    // Add to command history
     if (cmd.trim()) {
       setCommandHistory((prev) => [...prev, cmd]);
     }
@@ -120,33 +117,32 @@ const Terminal = () => {
 
       case "ls":
         addOutput([
-          { type: "output", content: "Pages disponibles:" },
-          { type: "success", content: "  📁 home        - Page d'accueil" },
-          { type: "success", content: "  📁 experience  - Expérience professionnelle" },
-          { type: "success", content: "  📁 education   - Formation et diplômes" },
-          { type: "success", content: "  📁 skills      - Compétences techniques" },
-          { type: "success", content: "  📁 contact     - Me contacter" },
-          { type: "output", content: "" },
-          { type: "output", content: "Utilisez 'cd <nom>' pour naviguer" },
+          { type: "output", content: "\n  📂 Pages disponibles\n" },
+          { type: "success", content: "     home        → Page d'accueil" },
+          { type: "success", content: "     experience  → Expérience professionnelle" },
+          { type: "success", content: "     education   → Formation et diplômes" },
+          { type: "success", content: "     skills      → Compétences techniques" },
+          { type: "success", content: "     contact     → Me contacter\n" },
+          { type: "output", content: "  💡 Tapez 'cd <nom>' pour naviguer\n" },
         ]);
         break;
 
       case "cd":
         const page = args[1];
         if (!page) {
-          addOutput([{ type: "error", content: "Usage: cd <page>" }]);
+          addOutput([{ type: "error", content: "  ✗ Usage: cd <page>" }]);
         } else if (page in PAGES) {
-          addOutput([{ type: "success", content: `Navigation vers ${page}...` }]);
+          addOutput([{ type: "success", content: `  ✓ Navigation vers ${page}...` }]);
           setTimeout(() => navigate(PAGES[page as keyof typeof PAGES]), 500);
         } else {
-          addOutput([{ type: "error", content: `bash: cd: ${page}: Aucun fichier ou dossier de ce type` }]);
+          addOutput([{ type: "error", content: `  ✗ Page introuvable: ${page}` }]);
         }
         break;
 
       case "cat":
         const file = args[1];
         if (!file) {
-          addOutput([{ type: "error", content: "Usage: cat <fichier>" }]);
+          addOutput([{ type: "error", content: "  ✗ Usage: cat <fichier>" }]);
         } else {
           handleCatCommand(file);
         }
@@ -154,75 +150,69 @@ const Terminal = () => {
 
       case "whoami":
         addOutput([
-          { type: "output", content: "Lionel Togbe" },
-          { type: "output", content: "Bachelor Administrateur Système et Réseaux" },
-          { type: "output", content: "Passionné de cybersécurité 🔒" },
+          { type: "output", content: "\n  👤 Lionel Togbe" },
+          { type: "output", content: "  🎓 Bachelor Administrateur Système et Réseaux" },
+          { type: "success", content: "  🔒 Passionné de Cybersécurité\n" },
         ]);
         break;
 
       case "uname":
         addOutput([
-          { type: "output", content: "LionelOS 2025.1 x86_64 GNU/Linux" },
-          { type: "output", content: "Kernel: 6.5.0-cyber-security" },
+          { type: "output", content: "\n  LionelOS 2025.1 x86_64 GNU/Linux" },
+          { type: "output", content: "  Kernel: 6.5.0-cyber-security\n" },
         ]);
         break;
 
       case "neofetch":
         addOutput([
           { type: "ascii", content: `
-       _,met\$\$\$\$\$gg.           visitor@lionel-cv
-    ,g\$\$\$\$\$\$\$\$\$\$\$\$\$\$P.        ─────────────────
-  ,g\$\$P"     """Y\$\$."$.        OS: LionelOS 2025.1
- ,\$\$P'              \`\$\$\$.      Host: Portfolio CV
-',\$\$P       ,ggs.     \`\$\$b:    Kernel: 6.5.0-cyber
-\`d\$\$'     ,\$P"'   .    \$\$\$    Uptime: ∞
- \$\$P      d\$'     ,    \$\$P    Shell: bash 5.2.15
- \$\$:      \$\$.   -    ,d\$\$'    Terminal: web-term
- \$\$;      Y\$b._   _,d\$P'      CPU: Neural Net v3
- Y\$\$.    \`.\`"Y\$\$\$\$P"'         Memory: 16GB
- \`\$\$b      "-.__              Skills: Sysadmin
-  \`Y\$\$                        Passion: Cybersecurity
-   \`Y\$\$.
-     \`\$\$b.
-       \`Y\$\$b.
-          \`"Y\$b._
-              \`"""` },
+       ___       visitor@lionel-cv
+      (.. |      ──────────────────
+      (<> |      OS     LionelOS 2025.1
+     / __  \\     Host   Portfolio CV
+    ( /  \\ /|    Kernel 6.5.0-cyber
+   _/\\ __)/_)    Shell  bash 5.2.15
+   \\/-____\\/     Term   web-terminal
+                 CPU    Neural Net v3
+                 Memory 16GB DDR5
+                 ─────────────────
+                 🔒 Cybersécurité
+` },
         ]);
         break;
 
       case "sudo":
         if (trimmedCmd.includes("rm -rf /")) {
           addOutput([
-            { type: "error", content: "🚨 ALERTE SÉCURITÉ 🚨" },
-            { type: "error", content: "Tentative de destruction système détectée!" },
-            { type: "output", content: "Nice try... mais ce terminal est en lecture seule 😉" },
-            { type: "success", content: "Pro tip: En cybersécurité, on protège, on ne détruit pas!" },
+            { type: "error", content: "\n  🚨 ALERTE SÉCURITÉ 🚨" },
+            { type: "error", content: "  Tentative de destruction système détectée!" },
+            { type: "output", content: "\n  Nice try... mais ce terminal est protégé 😉" },
+            { type: "success", content: "  Pro tip: En cyber, on protège, on ne détruit pas!\n" },
           ]);
         } else {
-          addOutput([{ type: "error", content: `${username} is not in the sudoers file. This incident will be reported.` }]);
+          addOutput([{ type: "error", content: `  ✗ ${username} is not in the sudoers file.` }]);
         }
         break;
 
       case "hack":
         addOutput([
-          { type: "success", content: "Initialisation du module de hacking..." },
-          { type: "output", content: "[████████████████████] 100%" },
-          { type: "success", content: "Accès autorisé! 🔓" },
-          { type: "output", content: "" },
-          { type: "output", content: "Just kidding! Je suis un professionnel éthique 🎩" },
-          { type: "output", content: "La vraie cybersécurité, c'est protéger, pas attaquer." },
+          { type: "success", content: "\n  ⚡ Initialisation du module de hacking..." },
+          { type: "output", content: "  [██████████████████████████] 100%" },
+          { type: "success", content: "  ✓ Accès autorisé! 🔓\n" },
+          { type: "output", content: "  Just kidding! Je suis un professionnel éthique 🎩" },
+          { type: "output", content: "  La vraie cyber, c'est protéger, pas attaquer.\n" },
         ]);
         break;
 
       case "exit":
-        addOutput([{ type: "output", content: "Au revoir! Tapez n'importe quelle touche pour continuer..." }]);
+        addOutput([{ type: "output", content: "  👋 Au revoir!" }]);
         break;
 
       case "":
         break;
 
       default:
-        addOutput([{ type: "error", content: `bash: ${command}: commande introuvable. Tapez 'help' pour l'aide.` }]);
+        addOutput([{ type: "error", content: `  ✗ Commande introuvable: ${command}. Tapez 'help'.` }]);
     }
 
     setCurrentInput("");
@@ -233,98 +223,85 @@ const Terminal = () => {
     switch (file) {
       case "about":
         addOutput([
-          { type: "output", content: "╔══════════════════════════════════════╗" },
-          { type: "output", content: "║           À PROPOS DE MOI            ║" },
-          { type: "output", content: "╚══════════════════════════════════════╝" },
-          { type: "output", content: "" },
-          { type: "success", content: "Nom: Lionel Togbe" },
-          { type: "output", content: "Titre: Bachelor Administrateur Système et Réseaux" },
-          { type: "output", content: "Passion: Cybersécurité 🔒" },
-          { type: "output", content: "" },
-          { type: "output", content: "Étudiant en fin de BTS SIO, actuellement en alternance" },
-          { type: "output", content: "chez Cornerstone OnDemand. Curieux, rigoureux et motivé." },
-          { type: "output", content: "" },
-          { type: "success", content: "Objectif: Master en Cybersécurité 🎯" },
+          { type: "output", content: "\n  ┌─────────────────────────────────┐" },
+          { type: "output", content: "  │         À PROPOS DE MOI        │" },
+          { type: "output", content: "  └─────────────────────────────────┘\n" },
+          { type: "success", content: "  Nom      Lionel Togbe" },
+          { type: "output", content: "  Titre    Bachelor Admin Système & Réseaux" },
+          { type: "success", content: "  Passion  Cybersécurité 🔒\n" },
+          { type: "output", content: "  Étudiant en fin de BTS SIO, actuellement en" },
+          { type: "output", content: "  alternance chez Cornerstone OnDemand.\n" },
+          { type: "success", content: "  🎯 Objectif: Master en Cybersécurité\n" },
         ]);
         break;
 
       case "skills":
         addOutput([
-          { type: "output", content: "╔══════════════════════════════════════╗" },
-          { type: "output", content: "║          COMPÉTENCES TECH            ║" },
-          { type: "output", content: "╚══════════════════════════════════════╝" },
-          { type: "output", content: "" },
-          { type: "success", content: "[Systèmes]" },
-          { type: "output", content: "  ├── Windows Server ████████░░ 85%" },
-          { type: "output", content: "  ├── Debian/Linux  ████████░░ 80%" },
-          { type: "output", content: "  └── Active Directory ████████░░ 85%" },
-          { type: "output", content: "" },
-          { type: "success", content: "[Réseaux & Sécurité]" },
-          { type: "output", content: "  ├── LAN/WAN/VPN   ████████░░ 80%" },
-          { type: "output", content: "  ├── OpenVPN       ███████░░░ 75%" },
-          { type: "output", content: "  └── Firewall      ███████░░░ 75%" },
-          { type: "output", content: "" },
-          { type: "success", content: "[Outils]" },
-          { type: "output", content: "  ├── GLPI/ServiceNow ████████░░ 85%" },
-          { type: "output", content: "  ├── Hyper-V/VMware ████████░░ 80%" },
-          { type: "output", content: "  └── Intune/Jamf   ████████░░ 80%" },
+          { type: "output", content: "\n  ┌─────────────────────────────────┐" },
+          { type: "output", content: "  │       COMPÉTENCES TECH         │" },
+          { type: "output", content: "  └─────────────────────────────────┘\n" },
+          { type: "success", content: "  ▸ Systèmes" },
+          { type: "output", content: "    Windows Server  ████████░░  85%" },
+          { type: "output", content: "    Debian/Linux    ████████░░  80%" },
+          { type: "output", content: "    Active Dir      ████████░░  85%\n" },
+          { type: "success", content: "  ▸ Réseaux & Sécurité" },
+          { type: "output", content: "    LAN/WAN/VPN     ████████░░  80%" },
+          { type: "output", content: "    OpenVPN         ███████░░░  75%" },
+          { type: "output", content: "    Firewall        ███████░░░  75%\n" },
+          { type: "success", content: "  ▸ Outils" },
+          { type: "output", content: "    GLPI/ServiceNow ████████░░  85%" },
+          { type: "output", content: "    Hyper-V/VMware  ████████░░  80%\n" },
         ]);
         break;
 
       case "exp":
       case "experience":
         addOutput([
-          { type: "output", content: "╔══════════════════════════════════════╗" },
-          { type: "output", content: "║      EXPÉRIENCE PROFESSIONNELLE      ║" },
-          { type: "output", content: "╚══════════════════════════════════════╝" },
-          { type: "output", content: "" },
-          { type: "success", content: "[2023 - Présent] Cornerstone OnDemand" },
-          { type: "output", content: "  Apprenti Admin Systèmes et Réseaux" },
-          { type: "output", content: "  → Gestion parc informatique" },
-          { type: "output", content: "  → Migration infrastructure" },
-          { type: "output", content: "  → Méthode Agile" },
-          { type: "output", content: "" },
-          { type: "success", content: "[2023] NES - Technicien Support N1" },
-          { type: "output", content: "  → Support utilisateur GLPI" },
-          { type: "output", content: "  → Diagnostic pannes" },
+          { type: "output", content: "\n  ┌─────────────────────────────────┐" },
+          { type: "output", content: "  │    EXPÉRIENCE PROFESSIONNELLE  │" },
+          { type: "output", content: "  └─────────────────────────────────┘\n" },
+          { type: "success", content: "  ▸ 2023 - Présent | Cornerstone OnDemand" },
+          { type: "output", content: "    Apprenti Admin Systèmes et Réseaux" },
+          { type: "output", content: "    → Gestion parc informatique" },
+          { type: "output", content: "    → Migration infrastructure" },
+          { type: "output", content: "    → Méthode Agile\n" },
+          { type: "success", content: "  ▸ 2023 | NES" },
+          { type: "output", content: "    Technicien Support N1" },
+          { type: "output", content: "    → Support utilisateur GLPI" },
+          { type: "output", content: "    → Diagnostic pannes\n" },
         ]);
         break;
 
       case "edu":
       case "education":
         addOutput([
-          { type: "output", content: "╔══════════════════════════════════════╗" },
-          { type: "output", content: "║             FORMATION                ║" },
-          { type: "output", content: "╚══════════════════════════════════════╝" },
-          { type: "output", content: "" },
-          { type: "success", content: "[2023-2025] BTS SIO option SISR" },
-          { type: "output", content: "  AFTEC Orléans" },
-          { type: "output", content: "  Administration systèmes et réseaux" },
-          { type: "output", content: "" },
-          { type: "success", content: "[2019-2021] Titre Pro Technicien Support" },
-          { type: "output", content: "  Cformat Pro, Cergy" },
-          { type: "output", content: "" },
-          { type: "success", content: "[Prochain objectif]" },
-          { type: "output", content: "  🎯 Master Cybersécurité" },
+          { type: "output", content: "\n  ┌─────────────────────────────────┐" },
+          { type: "output", content: "  │           FORMATION            │" },
+          { type: "output", content: "  └─────────────────────────────────┘\n" },
+          { type: "success", content: "  ▸ 2023-2025 | BTS SIO option SISR" },
+          { type: "output", content: "    AFTEC Orléans" },
+          { type: "output", content: "    Administration systèmes et réseaux\n" },
+          { type: "success", content: "  ▸ 2019-2021 | Titre Pro Tech Support" },
+          { type: "output", content: "    Cformat Pro, Cergy\n" },
+          { type: "success", content: "  🎯 Prochain objectif" },
+          { type: "output", content: "    Master Cybersécurité\n" },
         ]);
         break;
 
       case "contact":
         addOutput([
-          { type: "output", content: "╔══════════════════════════════════════╗" },
-          { type: "output", content: "║             CONTACT                  ║" },
-          { type: "output", content: "╚══════════════════════════════════════╝" },
-          { type: "output", content: "" },
-          { type: "success", content: "📧 Email: lionel.togbe@icloud.com" },
-          { type: "success", content: "📱 Tél: +33 7 44 96 78 87" },
-          { type: "success", content: "📍 Localisation: Orléans, France" },
-          { type: "output", content: "" },
-          { type: "output", content: "Tapez 'cd contact' pour le formulaire complet" },
+          { type: "output", content: "\n  ┌─────────────────────────────────┐" },
+          { type: "output", content: "  │           CONTACT              │" },
+          { type: "output", content: "  └─────────────────────────────────┘\n" },
+          { type: "success", content: "  📧  lionel.togbe@icloud.com" },
+          { type: "success", content: "  📱  +33 7 44 96 78 87" },
+          { type: "success", content: "  📍  Orléans, France\n" },
+          { type: "output", content: "  💡 Tapez 'cd contact' pour le formulaire\n" },
         ]);
         break;
 
       default:
-        addOutput([{ type: "error", content: `cat: ${file}: Aucun fichier ou dossier de ce type` }]);
+        addOutput([{ type: "error", content: `  ✗ Fichier introuvable: ${file}` }]);
     }
   };
 
@@ -350,7 +327,6 @@ const Terminal = () => {
       }
     } else if (e.key === "Tab") {
       e.preventDefault();
-      // Simple autocomplete
       const pages = Object.keys(PAGES);
       const match = pages.find((p) => p.startsWith(currentInput.replace("cd ", "")));
       if (currentInput.startsWith("cd ") && match) {
@@ -364,22 +340,27 @@ const Terminal = () => {
   };
 
   return (
-    <div className="terminal-window w-full max-w-4xl mx-auto" onClick={focusInput}>
+    <div className="terminal-window w-full max-w-4xl mx-auto animate-pulse-glow" onClick={focusInput}>
+      {/* Terminal Header */}
       <div className="terminal-header">
-        <div className="terminal-dot bg-red-500"></div>
-        <div className="terminal-dot bg-yellow-500"></div>
-        <div className="terminal-dot bg-green-500"></div>
-        <span className="ml-4 text-xs text-muted-foreground font-mono">
+        <div className="flex items-center gap-2">
+          <div className="terminal-dot bg-red-500/80 hover:bg-red-500"></div>
+          <div className="terminal-dot bg-yellow-500/80 hover:bg-yellow-500"></div>
+          <div className="terminal-dot bg-green-500/80 hover:bg-green-500"></div>
+        </div>
+        <span className="ml-4 text-xs text-muted-foreground font-mono flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-primary/60 animate-pulse"></span>
           visitor@lionel-cv: ~
         </span>
       </div>
       
+      {/* Terminal Body */}
       <div ref={terminalRef} className="terminal-body">
         {history.map((line, index) => (
           <div key={index} className="leading-relaxed">
             {line.type === "input" && (
-              <div>
-                <span className="terminal-prompt">{line.prompt} </span>
+              <div className="flex items-center gap-2">
+                <span className="terminal-prompt">{line.prompt}</span>
                 <span className="terminal-command">{line.content}</span>
               </div>
             )}
@@ -390,16 +371,16 @@ const Terminal = () => {
               <div className="terminal-error">{line.content}</div>
             )}
             {line.type === "success" && (
-              <div className="terminal-success">{line.content}</div>
+              <div className="terminal-success font-medium">{line.content}</div>
             )}
             {line.type === "ascii" && (
-              <pre className="terminal-success text-xs md:text-sm leading-none">{line.content}</pre>
+              <pre className="terminal-success text-[10px] md:text-xs leading-tight opacity-80">{line.content}</pre>
             )}
           </div>
         ))}
         
         {/* Current input line */}
-        <div className="flex items-center">
+        <div className="flex items-center mt-2">
           <span className="terminal-prompt">
             {username}@{hostname}:{currentPath}${" "}
           </span>
@@ -409,11 +390,12 @@ const Terminal = () => {
             value={currentInput}
             onChange={(e) => setCurrentInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="flex-1 bg-transparent outline-none text-foreground font-mono"
+            className="flex-1 bg-transparent border-none outline-none text-foreground font-mono ml-1 caret-primary"
             autoFocus
             spellCheck={false}
+            autoComplete="off"
           />
-          <span className="cursor-blink text-primary">█</span>
+          <span className="cursor-blink text-primary">▊</span>
         </div>
       </div>
     </div>
