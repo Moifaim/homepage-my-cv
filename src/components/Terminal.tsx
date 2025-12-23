@@ -340,24 +340,26 @@ const Terminal = () => {
   };
 
   return (
-    <div className="terminal-window w-full max-w-4xl mx-auto animate-pulse-glow" onClick={focusInput}>
+    <div className="terminal-window scanlines w-full max-w-4xl mx-auto animate-pulse-glow" onClick={focusInput}>
       {/* Terminal Header */}
       <div className="terminal-header">
-        <div className="flex items-center gap-2">
-          <div className="terminal-dot bg-red-500/80 hover:bg-red-500"></div>
-          <div className="terminal-dot bg-yellow-500/80 hover:bg-yellow-500"></div>
-          <div className="terminal-dot bg-green-500/80 hover:bg-green-500"></div>
+        <div className="flex items-center gap-2.5">
+          <div className="terminal-dot bg-[#ff5f57] hover:brightness-110"></div>
+          <div className="terminal-dot bg-[#febc2e] hover:brightness-110"></div>
+          <div className="terminal-dot bg-[#28c840] hover:brightness-110"></div>
         </div>
-        <span className="ml-4 text-xs text-muted-foreground font-mono flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-primary/60 animate-pulse"></span>
-          visitor@lionel-cv: ~
-        </span>
+        <div className="flex-1 flex items-center justify-center">
+          <span className="text-xs text-muted-foreground/60 font-mono flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+            visitor@lionel-cv — bash
+          </span>
+        </div>
       </div>
       
       {/* Terminal Body */}
       <div ref={terminalRef} className="terminal-body">
         {history.map((line, index) => (
-          <div key={index} className="leading-relaxed">
+          <div key={index} className="leading-relaxed mb-0.5">
             {line.type === "input" && (
               <div className="flex items-center gap-2">
                 <span className="terminal-prompt">{line.prompt}</span>
@@ -374,13 +376,13 @@ const Terminal = () => {
               <div className="terminal-success font-medium">{line.content}</div>
             )}
             {line.type === "ascii" && (
-              <pre className="terminal-success text-[10px] md:text-xs leading-tight opacity-80">{line.content}</pre>
+              <pre className="terminal-success text-[9px] md:text-[11px] leading-tight opacity-70">{line.content}</pre>
             )}
           </div>
         ))}
         
         {/* Current input line */}
-        <div className="flex items-center mt-2">
+        <div className="flex items-center mt-3">
           <span className="terminal-prompt">
             {username}@{hostname}:{currentPath}${" "}
           </span>
@@ -390,12 +392,12 @@ const Terminal = () => {
             value={currentInput}
             onChange={(e) => setCurrentInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="flex-1 bg-transparent border-none outline-none text-foreground font-mono ml-1 caret-primary"
+            className="flex-1 bg-transparent border-none outline-none text-foreground font-mono ml-1 caret-primary text-sm"
             autoFocus
             spellCheck={false}
             autoComplete="off"
           />
-          <span className="cursor-blink text-primary">▊</span>
+          <span className="cursor-blink text-primary text-lg">▊</span>
         </div>
       </div>
     </div>
