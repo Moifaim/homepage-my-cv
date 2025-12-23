@@ -1,70 +1,67 @@
-import { Shield, Lock, Terminal as TerminalIcon, Zap, Server, Globe, Sparkles } from "lucide-react";
+import { Shield, Lock, Terminal as TerminalIcon, Zap, Server, Globe } from "lucide-react";
 import Terminal from "@/components/Terminal";
 
 const Home = () => {
   return (
     <div className="min-h-screen relative z-10">
       {/* Hero Section */}
-      <header className="pt-24 pb-16 px-4 relative">
-        <div className="max-w-4xl mx-auto text-center">
+      <header className="pt-20 pb-16 px-4">
+        <div className="max-w-5xl mx-auto text-center">
           {/* Floating icons */}
-          <div className="flex items-center justify-center gap-5 mb-10">
-            {[
-              { Icon: Shield, delay: '0s' },
-              { Icon: Server, delay: '0.3s' },
-              { Icon: Lock, delay: '0.6s' },
-            ].map(({ Icon, delay }, i) => (
-              <div 
-                key={i}
-                className="p-3 bg-card rounded-xl border border-border shadow-sm animate-float"
-                style={{ animationDelay: delay }}
-              >
-                <Icon className="h-5 w-5 text-primary" />
-              </div>
-            ))}
+          <div className="flex items-center justify-center gap-6 mb-8">
+            <div className="p-3 glass rounded-xl animate-float" style={{ animationDelay: '0s' }}>
+              <Shield className="h-6 w-6 text-primary" />
+            </div>
+            <div className="p-3 glass rounded-xl animate-float" style={{ animationDelay: '1s' }}>
+              <Server className="h-6 w-6 text-secondary" />
+            </div>
+            <div className="p-3 glass rounded-xl animate-float" style={{ animationDelay: '2s' }}>
+              <Lock className="h-6 w-6 text-accent" />
+            </div>
           </div>
 
           {/* Main title */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6" style={{ fontFamily: 'var(--font-display)' }}>
-            <span className="gradient-text">Lionel</span>
-            <span className="text-foreground"> Togbe</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
+            <span className="gradient-text">LIONEL</span>
+            <span className="text-foreground"> TOGBE</span>
           </h1>
           
-          {/* Subtitle */}
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <Sparkles className="w-4 h-4 text-primary/50" />
-            <p className="text-base md:text-lg text-muted-foreground">
+          {/* Subtitle with typing effect style */}
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <span className="text-primary text-xl">›</span>
+            <p className="text-lg md:text-xl text-muted-foreground font-mono">
               Bachelor Administrateur Système et Réseaux
+              <span className="cursor-blink text-primary ml-1">▊</span>
             </p>
           </div>
 
           {/* Tags */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mb-14">
-            {[
-              { icon: Zap, label: 'Cybersécurité' },
-              { icon: Server, label: 'Infrastructure' },
-              { icon: Globe, label: 'Réseaux' },
-            ].map(({ icon: Icon, label }) => (
-              <span key={label} className="cyber-badge">
-                <Icon className="w-3 h-3" />
-                {label}
-              </span>
-            ))}
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
+            <span className="cyber-badge">
+              <Zap className="inline-block w-3 h-3 mr-1" />
+              Cybersécurité
+            </span>
+            <span className="cyber-badge">
+              <Server className="inline-block w-3 h-3 mr-1" />
+              Infrastructure
+            </span>
+            <span className="cyber-badge">
+              <Globe className="inline-block w-3 h-3 mr-1" />
+              Réseaux
+            </span>
           </div>
         </div>
       </header>
 
       {/* Terminal Section */}
-      <section className="px-4 pb-10 relative">
-        <div className="max-w-3xl mx-auto">
-          {/* Terminal label */}
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <div className="glass px-4 py-2 rounded-full flex items-center gap-2 shadow-sm">
-              <TerminalIcon className="h-4 w-4 text-primary" />
-              <span className="text-xs text-muted-foreground">
-                Tapez <code className="text-primary font-mono font-medium">help</code> pour commencer
-              </span>
-            </div>
+      <section className="px-4 pb-8">
+        <div className="max-w-4xl mx-auto">
+          {/* Terminal instructions */}
+          <div className="flex items-center gap-3 mb-6 glass px-4 py-3 rounded-xl w-fit mx-auto">
+            <TerminalIcon className="h-4 w-4 text-primary" />
+            <span className="text-sm text-muted-foreground font-mono">
+              Terminal interactif — Tapez des commandes pour explorer
+            </span>
           </div>
 
           {/* Interactive Terminal */}
@@ -73,24 +70,24 @@ const Home = () => {
       </section>
 
       {/* Quick Commands */}
-      <section className="px-4 py-14">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-center text-xs text-muted-foreground mb-8 uppercase tracking-[0.2em] font-medium">
-            Commandes
+      <section className="px-4 py-12">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-center text-sm font-mono text-muted-foreground mb-8 uppercase tracking-widest">
+            Commandes rapides
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { cmd: "ls", desc: "Pages", icon: "📁" },
-              { cmd: "cd", desc: "Naviguer", icon: "🚀" },
-              { cmd: "cat", desc: "Infos", icon: "👤" },
+              { cmd: "ls", desc: "Lister les pages", icon: "📁" },
+              { cmd: "cd <page>", desc: "Naviguer", icon: "🚀" },
+              { cmd: "cat about", desc: "À propos", icon: "👤" },
               { cmd: "help", desc: "Aide", icon: "💡" },
             ].map((item) => (
               <div
                 key={item.cmd}
-                className="cyber-card text-center py-5 group"
+                className="cyber-card text-center group cursor-default"
               >
                 <span className="text-2xl mb-3 block">{item.icon}</span>
-                <code className="text-primary text-sm font-semibold block mb-1">
+                <code className="text-primary text-sm font-semibold block mb-2 group-hover:text-glow transition-all">
                   {item.cmd}
                 </code>
                 <p className="text-muted-foreground text-xs">{item.desc}</p>
@@ -102,16 +99,16 @@ const Home = () => {
 
       {/* Status Footer */}
       <footer className="px-4 py-8">
-        <div className="max-w-3xl mx-auto">
-          <div className="bg-card border border-border px-6 py-4 rounded-xl shadow-sm">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
-              <div className="flex items-center status-online text-muted-foreground text-xs uppercase tracking-wider">
-                <span>Disponible</span>
+        <div className="max-w-4xl mx-auto">
+          <div className="glass px-6 py-4 rounded-2xl">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
+              <div className="status-online text-muted-foreground font-mono">
+                <span>SYSTÈME ACTIF</span>
               </div>
-              <div className="flex items-center gap-3 text-muted-foreground text-xs">
-                <span>Recherche alternance</span>
-                <span className="w-1 h-1 rounded-full bg-primary/40" />
-                <span className="text-primary font-medium">Cybersécurité</span>
+              <div className="flex items-center gap-3 text-muted-foreground">
+                <span className="font-mono">Recherche alternance Bac+3 à Bac+5</span>
+                <span className="text-primary">•</span>
+                <span className="gradient-text font-semibold">Cybersécurité</span>
               </div>
             </div>
           </div>
