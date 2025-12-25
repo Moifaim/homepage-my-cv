@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, MapPin, Phone, Send, Shield, MessageSquare, Zap } from "lucide-react";
+import { Mail, MapPin, Phone, Send, Shield, MessageSquare, Zap, Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const contactInfo = [
   {
@@ -26,11 +28,38 @@ const contactInfo = [
 ];
 
 const Contact = () => {
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Message envoyé avec succès !", {
-      description: "Je vous répondrai dans les plus brefs délais.",
-    });
+    setIsLoading(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke("send-contact-email", {
+        body: formData,
+      });
+
+      if (error) throw error;
+
+      toast.success("Message envoyé avec succès !", {
+        description: "Je vous répondrai dans les plus brefs délais.",
+      });
+
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (error: any) {
+      console.error("Error sending message:", error);
+      toast.error("Erreur lors de l'envoi", {
+        description: "Veuillez réessayer ou me contacter directement par email.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -70,6 +99,9 @@ const Contact = () => {
                   placeholder="John Doe"
                   required
                   className="cyber-input"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  disabled={isLoading}
                 />
               </div>
               
@@ -83,6 +115,9 @@ const Contact = () => {
                   placeholder="john@example.com"
                   required
                   className="cyber-input"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  disabled={isLoading}
                 />
               </div>
               
@@ -95,6 +130,9 @@ const Contact = () => {
                   placeholder="Opportunité d'alternance"
                   required
                   className="cyber-input"
+                  value={formData.subject}
+                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                  disabled={isLoading}
                 />
               </div>
               
@@ -107,15 +145,28 @@ const Contact = () => {
                   placeholder="Votre message..."
                   className="cyber-input min-h-[140px] resize-none"
                   required
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  disabled={isLoading}
                 />
               </div>
 
               <Button
                 type="submit"
                 className="w-full cyber-button bg-primary text-primary-foreground hover:bg-primary/90 border-primary"
+                disabled={isLoading}
               >
-                <Send className="mr-2 h-4 w-4" />
-                Envoyer le message
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Envoi en cours...
+                  </>
+                ) : (
+                  <>
+                    <Send className="mr-2 h-4 w-4" />
+                    Envoyer le message
+                  </>
+                )}
               </Button>
             </form>
           </section>
